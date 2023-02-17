@@ -11,7 +11,7 @@ function Header() {
   function RenderLogin() {
     return (
       <div
-        className="flex justify-center items-center w-[1920px] h-[50px] relative gap-2.5 px-[302px] py-2.5 bg-[#f8f8f9] border-t-2 border-r-0 border-b-0 border-l-0 border-[#601bb3]"
+        className="flex justify-center items-center w-[100%] h-[50px] relative gap-2.5 px-[302px] py-2.5 bg-[#f8f8f9] border-t-2 border-r-0 border-b-0 border-l-0 border-[#601bb3]"
         style={{ boxShadow: '0px 1px 4px 0 rgba(0,0,0,0.25)' }}
       >
         <svg
@@ -129,7 +129,7 @@ function Header() {
   function RenderLogout() {
     return (
       <div
-      className="flex justify-center items-center w-[1920px] h-[50px] relative gap-2.5 px-[302px] py-2.5 bg-[#f8f8f9] border-t-2 border-r-0 border-b-0 border-l-0 border-[#601bb3]"
+      className="flex justify-center items-center w-[100%] h-[50px] relative gap-2.5 px-[302px] py-2.5 bg-[#f8f8f9] border-t-2 border-r-0 border-b-0 border-l-0 border-[#601bb3]"
       style={{ boxShadow: "0px 1px 4px 0 rgba(0,0,0,0.25)" }}
     >
       <div className="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-[47px] w-12 relative overflow-hidden gap-2.5 px-[15px] py-1.5">

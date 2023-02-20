@@ -6,7 +6,7 @@ import { ReactComponent as IC_share } from '../assets/ic_share.svg';
 
 const Login = () => {
   return (
-    <div className="w-[288.45px] h-[555.2px] relative select-none">
+    <div className="w-[288.45px] h-[555.2px] relative flex select-none">
       <div className="flex justify-center items-start w-[288.45px] h-[61px] absolute left-0 top-0">
         <IC_stackoverflow />
       </div>
@@ -74,7 +74,7 @@ const Login = () => {
             Forgot password?
           </p>
         </div>
-        <input className="flex-grow-0 flex-shrink-0 w-[240.45px] h-[32.59px] pl-2 relative rounded-[3px] bg-white border-[0.5px] border-[#9fa6ad] " />
+        <input type='password' className="flex-grow-0 flex-shrink-0 w-[240.45px] h-[32.59px] pl-2 relative rounded-[3px] bg-white border-[0.5px] border-[#9fa6ad] " />
         <div className="cursor-pointer flex justify-center items-center flex-grow-0 flex-shrink-0 w-[240.45px] h-[37.8px] gap-2.5 p-2.5 rounded-[3px] bg-[#0a95ff] hover:bg-[#0074cc]">
           <p className="flex-grow-0 flex-shrink-0 w-[114px] text-[13px] font-medium text-center text-white">
             Log in

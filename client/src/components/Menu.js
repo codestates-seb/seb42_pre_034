@@ -56,7 +56,7 @@ function Menu() {
     // 1. Click된 탭의 상태를 true로 변경
     setIsSelected(selectedMenu);
     // 2. 해당 경로로 링크 이동
-    location.replace(`/seb42_pre_034/${selectedMenu}`);
+    location.href=`/seb42_pre_034/${selectedMenu}`;
   };
 
   return (

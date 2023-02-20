@@ -9,8 +9,8 @@ function App() {
     <div className="flex flex-wrap flex-row justify-center items-start w-[100%]] h-[100vh]">
       <Header />
       <Routes>
-        <Route exact path="/seb42_pre_034/" element={<Home />} />
-        <Route path="/seb42_pre_034/login" element={<Login />} />
+        <Route path="*" element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

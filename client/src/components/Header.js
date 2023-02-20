@@ -1,5 +1,6 @@
 import userImg from '../assets/user_img.png';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 /* eslint-disable */
 
 function Header() {
@@ -193,9 +194,9 @@ function Header() {
           />
         </svg>
       </div>
-      <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[59.46px] h-[33px] relative overflow-hidden gap-2.5 px-2.5 py-3.5 rounded-[3px] bg-[#e1ecf4] border-[0.5px] border-[#7aa7c7]" onClick={loginHandle}>
+      <Link to="/seb42_pre_034/login"><div className="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[59.46px] h-[33px] relative overflow-hidden gap-2.5 px-2.5 py-3.5 rounded-[3px] bg-[#e1ecf4] border-[0.5px] border-[#7aa7c7]" >
         <p className="flex-grow-0 flex-shrink-0 text-[13px] text-center text-[#39739d]">Log in</p>
-      </div>
+      </div></Link>
       <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[68.45px] h-[33px] relative gap-2.5 px-[11px] py-3.5 rounded-[3px] bg-[#0a95ff] border-[0.5px] border-[#349eef]">
         <p className="flex-grow-0 flex-shrink-0 text-[13px] text-center text-white">Sign up</p>
       </div>

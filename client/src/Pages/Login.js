@@ -6,7 +6,7 @@ import { ReactComponent as IC_share } from '../assets/ic_share.svg';
 
 const Login = () => {
   return (
-    <div className="w-[288.45px] h-[555.2px] relative select-none">
+    <div className="w-[288.45px] h-[555.2px] relative flex select-none">
       <div className="flex justify-center items-start w-[288.45px] h-[61px] absolute left-0 top-0">
         <IC_stackoverflow />
       </div>

@@ -1,0 +1,42 @@
+
+{
+  "post":[{
+      "id": 1,
+      "title": "How to write better code than ChatGPT",
+      "content": "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
+      "view" : 2,
+      "createdAt" : "0000-00-00",
+      "modifiedAt": "modified 1 mins ago",
+      "memberId": "1",
+      
+      "tags": ["career", "chatgpt", "ai"],        
+      "reputation": "12.2k",        
+      "votes": -1,
+      "answers": 0
+
+  },
+  {
+      "id": 2,
+      "title": "How to write better code than ChatGPT",
+      "content": "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
+      "view" : 2,
+      "createdAt" : "0000-00-00",
+      "modifiedAt": "modified 1 mins ago",
+      "memberId": "1",
+      "tags": ["career", "chatgpt", "ai"]
+      
+  },
+  {
+  
+      "id": 3,
+      "title": "How to write better code than ChatGPT",
+      "content": "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
+      "view" : 2,
+      "createdAt" : "0000-00-00",
+      "modifiedAt": "modified 1 mins ago",
+      "memberId": "1",
+      "tags": ["career", "chatgpt", "ai"]
+  
+  }
+  ]
+}        

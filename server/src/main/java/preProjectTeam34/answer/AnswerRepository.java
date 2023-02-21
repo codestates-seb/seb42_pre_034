@@ -1,0 +1,10 @@
+package preProjectTeam34.answer;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface AnswerRepository extends JpaRepository<Answer, Long> {
+    //@Query?
+    Optional<Answer> findByAnswer(Long answerId);
+}

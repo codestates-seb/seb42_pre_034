@@ -1,5 +1,5 @@
 import cool from '../assets/cool.png';
-import dummy from '../components/dummy.json';
+import dummy from '../assets/dummy.json';
 /*
  게시글 페이지 구현
 게시글 페이지를 구현하기 위해 게시글 컴포넌트를 먼저 구현해야 합니다.

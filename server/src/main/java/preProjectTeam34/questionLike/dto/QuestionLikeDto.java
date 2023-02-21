@@ -1,4 +1,4 @@
-package questionLike.dto;
+package preProjectTeam34.questionLike.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

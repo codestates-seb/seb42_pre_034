@@ -1,9 +1,9 @@
-package questionLike.service;
+package preProjectTeam34.questionLike.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import questionLike.dto.QuestionLikeDto;
-import questionLike.repository.QuestionLikeRepository;
+import preProjectTeam34.questionLike.dto.QuestionLikeDto;
+import preProjectTeam34.questionLike.repository.QuestionLikeRepository;
 
 @Service
 @RequiredArgsConstructor

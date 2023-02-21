@@ -24,8 +24,13 @@ public class OAuthAttributes {
         this.picture = picture;
     }
 
-    public  static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
-        return ofGoogle(userNameAttributeName, attributes);
+    public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
+        if(registrationId.equals("google")){
+            return ofGoogle(userNameAttributeName, attributes);
+        } else if (registrationId.equals("naver")) {
+            return ofNaver("id", attributes);
+        }
+        return ofGoogle(userNameAttributeName, attributes); // 추후 수정해야함
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
@@ -38,11 +43,15 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public Member toEntity() {
-        return Member.builder()
-                .nickName(name)
-                .email(email)
-                .picture(picture)
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+
+        return OAuthAttributes.builder()
+                .name((String) response.get("name"))
+                .email((String) response.get("email"))
+                .picture((String) response.get("profile_image"))
+                .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
                 .build();
     }
 }

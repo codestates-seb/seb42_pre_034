@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.domain.Auditable;
+import preProjectTeam34.audit.Auditable;
+
 
 import javax.persistence.*;
 //TODO: Auditable, enum status 확인.

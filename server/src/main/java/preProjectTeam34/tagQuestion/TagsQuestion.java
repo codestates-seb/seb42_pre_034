@@ -1,8 +1,9 @@
-package tagQuestion;
+package preProjectTeam34.tagQuestion;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import tags.Tags;
+import preProjectTeam34.question.entity.Question;
+import preProjectTeam34.tags.Tags;
 
 import javax.persistence.*;
 

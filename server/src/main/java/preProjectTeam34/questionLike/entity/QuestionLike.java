@@ -1,11 +1,12 @@
-package questionLike.entity;
+package preProjectTeam34.questionLike.entity;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import preProjectTeam34.member.entity.Member;
+import preProjectTeam34.question.entity.Question;
 
 import javax.persistence.*;
-import java.lang.reflect.Member;
 
 @Entity
 @Getter

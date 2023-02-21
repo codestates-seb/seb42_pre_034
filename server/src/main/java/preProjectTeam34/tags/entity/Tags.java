@@ -1,4 +1,4 @@
-package preProjectTeam34.tags;
+package preProjectTeam34.tags.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

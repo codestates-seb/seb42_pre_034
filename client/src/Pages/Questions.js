@@ -1,5 +1,5 @@
 import cool from '../assets/cool.png';
-import dummy from './dummy.json';
+import dummy from '../assets/dummy.json';
 /*
  게시글 페이지 구현
 게시글 페이지를 구현하기 위해 게시글 컴포넌트를 먼저 구현해야 합니다.
@@ -12,10 +12,10 @@ import dummy from './dummy.json';
  해당 컴포넌트 하나로 질문/답변을 모두 표시할 수 있어야 합니다.
  게시글 타입이 '답변'인 경우 답변 채택 버튼을 표시합니다.
  */
-const Posting = () => {
+const Questions = () => {
   return (
-    <div className="">
-      <div>
+    <div className="h-screen pt-[20px] pl-[20px]">
+      <div className='pb-[80px]'>
         <p className="text-[32px] font-medium text-left text-black">
           All Questions
         </p>
@@ -75,4 +75,4 @@ const Posting = () => {
   );
 };
 
-export default Posting;
+export default Questions;

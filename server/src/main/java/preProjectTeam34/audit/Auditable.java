@@ -9,6 +9,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+
 @EntityListeners(value = {AuditingEntityListener.class})
 @MappedSuperclass
 public abstract class Auditable {

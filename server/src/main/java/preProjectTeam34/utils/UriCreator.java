@@ -1,7 +1,6 @@
 package preProjectTeam34.utils;
 
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.net.URI;
 
 public class UriCreator {

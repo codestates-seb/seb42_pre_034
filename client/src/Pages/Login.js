@@ -11,10 +11,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState({
     id: '',
-    password: '',
+    password: ''
   });
 
-  /** checkValid
+    /** checkValid
    * - email 유효성 검사
    * - password 유효성 검사
    *    1. 최소 8자 이상의 30자 이하의 길이
@@ -23,31 +23,32 @@ const Login = () => {
    */
   function checkValid() {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,30}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,30}$/;
 
-    if (id === '') {
-      setMessage({ id: LOGIN_MESSAGES.EMPTY_EMAIL, password: '' });
-      return false;
+    if(id === '') {
+      setMessage({id: LOGIN_MESSAGES.EMPTY_EMAIL, password: ''})
+      return false
     }
-    if (!emailRegex.test(id)) {
-      setMessage({ id: LOGIN_MESSAGES.VALID_EMAIL, password: '' });
-      return false;
+    if(!emailRegex.test(id)) {
+      setMessage({id: LOGIN_MESSAGES.VALID_EMAIL, password: ''})
+      return false
     }
-    if (password === '') {
-      setMessage({ id: '', password: LOGIN_MESSAGES.EMPTY_PASSWORD });
-      return false;
+    if(password === '') {
+      setMessage({id: '', password: LOGIN_MESSAGES.EMPTY_PASSWORD})
+      return false
     }
-    if (!passwordRegex.test(password)) {
-      setMessage({ id: '', password: LOGIN_MESSAGES.VALID_PASSWORD });
-      return false;
-    } else return true;
+    if(!passwordRegex.test(password)) {
+      setMessage({id: '', password: LOGIN_MESSAGES.VALID_PASSWORD})
+      return false
+    }
+    else return true
   }
 
   function handleLogin(e) {
     e.preventDefault();
-    if (checkValid) {
-      setMessage({ id: '', password: '' });
+    if(checkValid()) {
+      setMessage({id: '', password: ''})
+
     }
   }
 
@@ -98,9 +99,7 @@ const Login = () => {
           onChange={(e) => setId(e.target.value)}
         />
         <p
-          className={`${
-            message.id === '' ? 'hidden' : ''
-          } pl-2 text-xs text-left text-[#D03932]`}
+          className={`${message.id === '' ?'hidden':''} pl-2 text-xs text-left text-[#D03932]`}
         >
           {message.id}
         </p>
@@ -119,9 +118,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <p
-          className={`${
-            message.password === '' ? 'hidden' : ''
-          } pl-2 text-xs text-left text-[#D03932]`}
+          className={`${message.password === ''?'hidden':''} pl-2 text-xs text-left text-[#D03932]`}
         >
           {message.password}
         </p>

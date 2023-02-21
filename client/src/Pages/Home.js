@@ -7,7 +7,7 @@ import Companies from './Companies';
 
 function Home() {
   return (
-    <div>
+    <div className="flex w-[1200px] h-screen">
       <Menu />
       <Routes>
         <Route path="*" element={<Questions />} />

@@ -59,7 +59,7 @@ function Menu() {
 
   return (
     <>
-      <ul>
+      <ul className='grow-0 pt-[40px] pr-[20px] border-r border-black'>
         <MenuItem
           label="Questions"
           selectMenu={selectMenu}

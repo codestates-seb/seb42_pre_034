@@ -14,8 +14,8 @@ import dummy from '../assets/dummy.json';
  */
 const Questions = () => {
   return (
-    <div className="">
-      <div>
+    <div className="h-screen pt-[20px] pl-[20px]">
+      <div className='pb-[80px]'>
         <p className="text-[32px] font-medium text-left text-black">
           All Questions
         </p>

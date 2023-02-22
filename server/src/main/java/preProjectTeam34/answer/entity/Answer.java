@@ -29,12 +29,13 @@ public class Answer extends Auditable {
     private long memberId;
 
     @Enumerated(EnumType.STRING)
-    private AnswerStatus answerStatus = AnswerStatus.ANSWER_REQUEST;
+    private AnswerStatus answerStatus = AnswerStatus.ANSWER_REGISTRATION;
 
     public enum AnswerStatus {
         //TODO: 필요한 status 수정, 테스트하면서 한번 더 확인.
-        ANSWER_REQUEST("질문 요청"),
-        ANSWER_DELETE("답변 삭제");
+        ANSWER_REGISTRATION("답변 등록 상태"),
+        ANSWER_CLOSED("답변 채택 상태"),
+        ANSWER_DELETE("답변 삭제 상태");
 
         @Getter
         private String status;

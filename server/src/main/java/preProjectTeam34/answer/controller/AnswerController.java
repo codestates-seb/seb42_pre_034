@@ -56,7 +56,7 @@ public class AnswerController {
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer))
                 , HttpStatus.OK);
     }
-    @GetMapping("/{answer-id}")
+    @GetMapping("/{answer-id}/delete")
     public ResponseEntity getAnswer(@PathVariable("answer-id") long answerId) {
         Answer answer = answerService.findAnswer(answerId);
 

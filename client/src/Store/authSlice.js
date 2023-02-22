@@ -1,4 +1,5 @@
-import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
+/* eslint-disable */
+import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
@@ -28,14 +29,15 @@ export const authSlice = createSlice({
 
 export const { loginStart, loginSuccess, loginFail } = authSlice.actions;
 
-export const loginWithNaver = createAsyncThunk(
-  'auth/loginWithNaver',
-  async (code) => {
-    /* eslint-disable-next-line no-undef */
-    const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/naver`, { code });
-    return response.data.accessToken;
+export const loginWithNaver = (naverAccessToken) => async (dispatch) => {
+  dispatch(loginStart());
+  try {
+    const response = await axios.get(`/auth/naver/callback`, { naverAccessToken });
+    dispatch(loginSuccess(response.data));
+  } catch (error) {
+    dispatch(loginFail(error.message));
   }
-);
+};
 
 export const loginWithKakao = (kakaoAccessToken) => async (dispatch) => {
   dispatch(loginStart());

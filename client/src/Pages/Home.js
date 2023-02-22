@@ -4,6 +4,7 @@ import Questions from './Questions';
 import Tags from './Tags';
 import Users from './Users';
 import Companies from './Companies';
+import Loading from "../components/Loading";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <Route path="/tags" element={<Tags />} />
         <Route path="/users" element={<Users />} />
         <Route path="/companies" element={<Companies />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
     </div>
   );

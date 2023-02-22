@@ -1,5 +1,6 @@
 import cool from '../assets/cool.png';
 import dummy from '../assets/dummy.json';
+import AskQuestion from '../components/AskQuestion';
 /*
  게시글 페이지 구현
 게시글 페이지를 구현하기 위해 게시글 컴포넌트를 먼저 구현해야 합니다.
@@ -19,11 +20,7 @@ const Questions = () => {
         <p className="text-[32px] font-medium text-left text-black">
           All Questions
         </p>
-        <div className="float-right w-[100px] h-10 relative overflow-hidden gap-2.5 py-2.5 rounded-[10px] bg-[#601bb3]">
-          <p className="text-[13px] font-bold text-center text-white">
-            Ask Question
-          </p>
-        </div>
+        <AskQuestion />
         <p className="text-xl text-left text-black">4 questions</p>
       </div>
       {dummy.post.map((data) => (

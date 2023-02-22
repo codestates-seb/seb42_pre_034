@@ -53,6 +53,7 @@ const Login = () => {
   }
 
   return (
+    <div className='bg-[#f1f2f3] w-[100%] h-[100%] flex justify-center items-start pt-[120px]'>
     <div className="w-[288.45px] h-[555.2px] relative flex flex-col select-none">
       <div className="flex justify-center items-start w-[288.45px] h-[61px] left-0 top-0">
         <IC_stackoverflow />
@@ -150,6 +151,7 @@ const Login = () => {
           <IC_share className="" />
         </div>
       </div>
+    </div>
     </div>
   );
 };

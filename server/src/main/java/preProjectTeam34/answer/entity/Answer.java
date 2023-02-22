@@ -1,4 +1,4 @@
-package preProjectTeam34.answer;
+package preProjectTeam34.answer.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,12 +14,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public interface Answer extends Auditable {
+public class Answer extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long answerId;
 
-    @Column
+    @Column (nullable = false, length = 5000)
     private String content;
 
     @Column
@@ -32,19 +32,14 @@ public interface Answer extends Auditable {
     private AnswerStatus answerStatus = AnswerStatus.ANSWER_REQUEST;
 
     public enum AnswerStatus {
-        //TODO: Request 상태 수정.
-        ANSWER_REQUEST(1, "질문 요청"),
-        ANSWER_CANCEL(2, "질문 취소");
+        //TODO: 필요한 status 수정, 테스트하면서 한번 더 확인.
+        ANSWER_REQUEST("질문 요청"),
+        ANSWER_DELETE("답변 삭제");
 
         @Getter
-        private int stepNumber;
-
-        @Getter
-        private String stepDescription;
-
-        AnswerStatus(int stepNumber, String stepDescription) {
-            this.stepNumber = stepNumber;
-            this.stepDescription = stepDescription;
+        private String status;
+        AnswerStatus(String status) {
+            this.status = status;
         }
     }
 }

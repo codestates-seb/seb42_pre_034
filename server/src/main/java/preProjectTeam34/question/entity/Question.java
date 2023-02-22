@@ -3,11 +3,13 @@ package preProjectTeam34.question.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import preProjectTeam34.audit.Auditable;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter

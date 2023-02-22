@@ -1,11 +1,12 @@
-package questionBookmark;
+package preProjectTeam34.questionBookmark;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import preProjectTeam34.member.entity.Member;
+import preProjectTeam34.question.entity.Question;
 
 import javax.persistence.*;
-import java.lang.reflect.Member;
 
 
 @Entity

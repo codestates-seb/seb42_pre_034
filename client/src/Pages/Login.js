@@ -3,8 +3,8 @@ import { ReactComponent as IC_kakao } from '../assets/ic_kakao.svg';
 import { ReactComponent as IC_google } from '../assets/ic_google.svg';
 import { ReactComponent as IC_stackoverflow } from '../assets/ic_stackoverflow.svg';
 import { ReactComponent as IC_share } from '../assets/ic_share.svg';
-import ic_naver from '../assets/icon_naver.png';
 import { LOGIN_MESSAGES } from '../constants/constants';
+import NaverLoginButton from '../components/NaverLoginButton'
 
 const Login = () => {
   const [id, setId] = useState('');
@@ -71,16 +71,7 @@ const Login = () => {
             Log in with KaKao
           </p>
         </div>
-        <div className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-[#22c75a] border-[0.5px] border-[#9fa6ad]">
-          <img
-            src={ic_naver}
-            className="flex-grow-0 flex-shrink-0 w-[18px] h-[16.2px] object-cover"
-            alt=""
-          />
-          <p className="flex-grow-0 flex-shrink-0 text-[13px] font-medium text-center text-white">
-            Log in with Naver
-          </p>
-        </div>
+        <NaverLoginButton />
       </div>
 
       <form

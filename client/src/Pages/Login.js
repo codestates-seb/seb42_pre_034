@@ -5,6 +5,7 @@ import { LOGIN_MESSAGES } from '../constants/constants';
 import GoogleLoginButton from '../components/GoogleLoginButton';
 import KakaoLoginButton from '../components/KakaoLoginButton';
 import NaverLoginButton from '../components/NaverLoginButton'
+import axios from 'axios';
 
 const Login = () => {
   const [id, setId] = useState('');
@@ -46,11 +47,25 @@ const Login = () => {
 
   function handleLogin(e) {
     e.preventDefault();
-    if(checkValid()) {
-      setMessage({id: '', password: ''})
-
-    }
+    sessionLogin(id,password)
   }
+
+const sessionLogin = (id, password) => {
+  setMessage({id: '', password: ''})
+  // eslint-disable-next-line no-undef
+  if (checkValid()) return axios.post(`${process.env.REACT_APP_SERVER_URL}/sessionLogin`, {
+    id: id,
+    password: password
+  })
+  .then(response => {
+    // 로그인 성공 시 처리할 로직
+    window.location.href = response.data.redirectUrl;
+  })
+  .catch(error => {
+    // 로그인 실패 시 처리할 로직
+    console.log(error)
+  });
+};
 
   return (
     <div className='bg-[#f1f2f3] w-[100%] h-[100%] flex justify-center items-start pt-[120px]'>

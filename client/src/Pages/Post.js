@@ -1,4 +1,5 @@
 import StackButton from '../components/StackButton';
+import PostBlock from '../components/post-components/PostBlock';
 
 /**
  * 질문 클릭 시 표시되는 상세 페이지
@@ -6,11 +7,18 @@ import StackButton from '../components/StackButton';
  */
 
 function Post() {
+  const dummyContent = {
+    body: "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
+    votes: -1,
+    tags: ["career", "chatgpt", "ai"],
+    author: "dev4jaehunkim"
+  }
+
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex flex-col w-full px-8'>
       {/* Post header */}
-      <header className='flex flex-col pl-8'>
-        <div className='flex justify-between w-11/12 my-4'>
+      <header className='flex flex-col mb-4'>
+        <div className='flex justify-between my-4'>
           {/* TODO: 제목 부분을 받아온 데이터로 표시하도록 수정 */}
           <h1 className='text-2xl'>How to write better code than ChatGPT</h1>
           <StackButton label="Ask Question"/>
@@ -32,10 +40,9 @@ function Post() {
             <p>18 times</p>
           </div>
         </div>
-        
       </header>
-      <article className='flex flex-col'>
-        This post id is 
+      <article className='flex flex-col border-t-[3px] border-[#f1f2f3] pt-4'>
+        <PostBlock content={dummyContent} />
         <StackButton label="Post Your Answer" />
       </article>
       

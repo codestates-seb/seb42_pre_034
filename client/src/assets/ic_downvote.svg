@@ -1,0 +1,11 @@
+<svg
+      width="40"
+      height="20"
+      viewBox="0 0 40 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="flex-grow-0 flex-shrink-0"
+      preserveAspectRatio="none"
+    >
+      <path d="M40 0L0 0L20 20" fill="#C9CBCF" />
+    </svg>

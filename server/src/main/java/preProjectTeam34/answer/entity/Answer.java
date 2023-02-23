@@ -32,7 +32,10 @@ public class Answer extends Auditable {
     private AnswerStatus answerStatus = AnswerStatus.ANSWER_REGISTRATION;
 
     public enum AnswerStatus {
-        //TODO: 필요한 status 수정, 테스트하면서 한번 더 확인.
+        //TODO: status 수정, 테스트하면서 한번 더 확인.
+        // ANSWER_REGISTRATION 이면 question에서도 QUESTION_ANSWERED로 변경.
+        // ANSWER_DELETE 후 answer가 비어있다면 question status 다시 QUESTION_REGISTRATION으로 변경.
+        // question 작성자가 답변을 채택할 경우 ANSWER_CLOSED로 변경.
         ANSWER_REGISTRATION("답변 등록 상태"),
         ANSWER_CLOSED("답변 채택 상태"),
         ANSWER_DELETE("답변 삭제 상태");

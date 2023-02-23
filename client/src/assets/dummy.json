@@ -23,8 +23,8 @@
       "createdAt" : "0000-00-00",
       "modifiedAt": "modified 1 mins ago",
       "memberId": "1",
-      "tags": ["career", "chatgpt", "ai"]
-      
+      "tags": ["career", "chatgpt", "ai"],
+      "votes": 3
   },
   {
       "id": 3,

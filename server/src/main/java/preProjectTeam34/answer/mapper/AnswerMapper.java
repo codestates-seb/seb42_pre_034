@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
-    Answer answerPostDtoToAnswer(AnswerPostDto answerPostDto);
+    Answer answerPostDtoToAnswer(long questionId, AnswerPostDto answerPostDto);
     Answer answerPatchDtoToAnswer(AnswerPatchDto answerPatchDto);
 
     //TODO: responseDto.

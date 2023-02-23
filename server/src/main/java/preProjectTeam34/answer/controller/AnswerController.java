@@ -16,15 +16,16 @@ import preProjectTeam34.dto.MultiResponseDto;
 import preProjectTeam34.dto.SingleResponseDto;
 import preProjectTeam34.utils.UriCreator;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/answers")
+@RequestMapping("/")
 @Slf4j
 @Validated
 public class AnswerController {
-    //TODO: 필드들 추가.
     private final static String ANSWER_DEFAULT_URL = "/answers";
     private final AnswerService answerService;
     private final AnswerMapper mapper;
@@ -35,19 +36,20 @@ public class AnswerController {
         this.mapper = answerMapper;
     }
 //TODO: Path variable, validation 추가.
-    @PostMapping
-    public ResponseEntity postAnswer(@RequestBody AnswerPostDto answerPostDto) {
+    @PostMapping("questions/{question-id}/answers")
+    public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
+                                     @Valid @RequestBody AnswerPostDto answerPostDto) {
 
-        Answer answer = mapper.answerPostDtoToAnswer(answerPostDto);
+        Answer answer = mapper.answerPostDtoToAnswer(questionId, answerPostDto);
         Answer createAnswer = answerService.createAnswer(answer);
 
         URI location = UriCreator.createUri(ANSWER_DEFAULT_URL, createAnswer.getAnswerId());
 
         return ResponseEntity.created(location).build();
     }
-    @PatchMapping("/{answer-id}/edit")
-    public ResponseEntity patchAnswer(@PathVariable long answerId,
-                                      @RequestBody AnswerPatchDto answerPatchDto) {
+    @PatchMapping("answers/{answer-id}/edit")
+    public ResponseEntity patchAnswer(@PathVariable("question-id")@Positive long answerId,
+                                      @Valid @RequestBody AnswerPatchDto answerPatchDto) {
         answerPatchDto.setAnswerId(answerId);
         Answer answer =
                 answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
@@ -56,7 +58,7 @@ public class AnswerController {
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer))
                 , HttpStatus.OK);
     }
-    @GetMapping("/{answer-id}/delete")
+    @GetMapping("answers/{answer-id}")
     public ResponseEntity getAnswer(@PathVariable("answer-id") long answerId) {
         Answer answer = answerService.findAnswer(answerId);
 
@@ -65,7 +67,7 @@ public class AnswerController {
                 HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("answers")
     public ResponseEntity getAnswers(@RequestParam int page,
                                      @RequestParam int size) {
         Page<Answer> pageAnswers = answerService.findAnswers(page - 1, size);
@@ -76,9 +78,11 @@ public class AnswerController {
                 HttpStatus.OK);
     }
 
-    @DeleteMapping("/{answer-id}")
-    public ResponseEntity cancelAnswer(@PathVariable("answer-id") long answerId) {
+    @DeleteMapping("answers/{answer-id}/delete")
+    public ResponseEntity cancelAnswer(@PathVariable("answer-id") @Positive long answerId) {
+
         answerService.deleteAnswer(answerId);
+
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -78,10 +78,12 @@ public class SecurityConfig {
 
         // 인가 기능 구현시 아래 코드를 변경해주어야 함
 
+//        http
+//                .authorizeHttpRequests()
+//                .anyRequest().authenticated();
         http
                 .authorizeHttpRequests()
-                .anyRequest().authenticated();
-
+                .anyRequest().permitAll();
         return http.build();
     }
 

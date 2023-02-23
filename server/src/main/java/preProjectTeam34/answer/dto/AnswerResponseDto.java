@@ -9,6 +9,7 @@ import preProjectTeam34.answer.entity.Answer;
 public class AnswerResponseDto {
 
         private long answerId;
+        private long questionId;
         private String content;
 
         private Answer.AnswerStatus answerStatus;

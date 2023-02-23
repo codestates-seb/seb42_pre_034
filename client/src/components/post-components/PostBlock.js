@@ -27,7 +27,7 @@ function PostBlock({content}) {
     <div className="flex">
       <Vote fetchedVote={content.votes} />
       <div>
-        <BlockBody fetchedBody={content.body} />
+        <BlockBody fetchedBody={content.content} />
       </div>
     </div>
   )

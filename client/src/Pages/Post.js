@@ -15,6 +15,31 @@ function Post() {
   const [postContent, setPostContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  function getTimeDifferenceString(pastTime) {
+    const ONE_DAY_MS = 24 * 60 * 60 * 1000; // Number of milliseconds in one day
+    const ONE_MONTH_MS = 30 * ONE_DAY_MS; // Number of milliseconds in one month
+    const ONE_YEAR_MS = 365 * ONE_DAY_MS; // Number of milliseconds in one year
+  
+    pastTime = new Date(pastTime);
+    const currentTime = new Date();
+    const timeDiffMs = currentTime - pastTime;
+  
+    if (timeDiffMs < ONE_DAY_MS) {
+      return 'today';
+    } else if (timeDiffMs < ONE_YEAR_MS) {
+      const numDays = Math.floor(timeDiffMs / ONE_DAY_MS);
+      return `${numDays} day${numDays === 1 ? '' : 's'}`;
+    } else if (timeDiffMs < ONE_YEAR_MS + ONE_MONTH_MS) {
+      const numMonths = Math.floor(timeDiffMs / ONE_MONTH_MS);
+      const numDays = Math.floor((timeDiffMs - numMonths * ONE_MONTH_MS) / ONE_DAY_MS);
+      return `${numMonths} month${numMonths === 1 ? '' : 's'} ${numDays} day${numDays === 1 ? '' : 's'}`;
+    } else {
+      const numYears = Math.floor(timeDiffMs / ONE_YEAR_MS);
+      const numMonths = Math.floor((timeDiffMs - numYears * ONE_YEAR_MS) / ONE_MONTH_MS);
+      return `${numYears} year${numYears === 1 ? '' : 's'} ${numMonths} month${numMonths === 1 ? '' : 's'}`;
+    }
+  }  
+
   // 페이지 이동 후 화면 표시
   useEffect(() => {
     axios.get(`http://localhost:8000/questions/${params.id}`)
@@ -35,24 +60,21 @@ function Post() {
       <header className='flex flex-col mb-4'>
         <div className='flex justify-between my-4'>
           {/* TODO: 제목 부분을 받아온 데이터로 표시하도록 수정 */}
-          <h1 className='text-2xl'>How to write better code than ChatGPT</h1>
+          <h1 className='text-4xl'>How to write better code than ChatGPT</h1>
           <StackButton label="Ask Question"/>
         </div>
         <div className='flex items-center gap-4 '>
           <div className='flex justify-center items-center text-sm'>
             <p className='text-[#8B9197] mr-1'>Asked</p>
-            {/* TODO: 서버에서 받아온 날짜로부터 계산된 값을 표시하기 */}
-            <p>Today</p>
+            <p>{getTimeDifferenceString(postContent.createdAt)}</p>
           </div>
           <div className='flex justify-center items-center text-sm'>
             <p className='text-[#8B9197] mr-1'>Modified</p>
-            {/* TODO: 서버에서 받아온 날짜로부터 계산된 값을 표시하기 */}
-            <p>Today</p>
+            <p>{getTimeDifferenceString(postContent.modifiedAt)}</p>
           </div>
           <div className='flex justify-center items-center text-sm'>
             <p className='text-[#8B9197] mr-1'>Viewed</p>
-            {/* TODO: 숫자 부분만 서버에서 받아온 조회수로 표시하기 */}
-            <p>18 times</p>
+            <p>{postContent.view} times</p>
           </div>
         </div>
       </header>

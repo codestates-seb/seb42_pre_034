@@ -32,11 +32,11 @@ function Post() {
     } else if (timeDiffMs < ONE_YEAR_MS + ONE_MONTH_MS) {
       const numMonths = Math.floor(timeDiffMs / ONE_MONTH_MS);
       const numDays = Math.floor((timeDiffMs - numMonths * ONE_MONTH_MS) / ONE_DAY_MS);
-      return `${numMonths} month${numMonths === 1 ? '' : 's'} ${numDays} day${numDays === 1 ? '' : 's'}`;
+      return `${numMonths} month${numMonths === 1 ? '' : 's'}, ${numDays} day${numDays === 1 ? '' : 's'}`;
     } else {
       const numYears = Math.floor(timeDiffMs / ONE_YEAR_MS);
       const numMonths = Math.floor((timeDiffMs - numYears * ONE_YEAR_MS) / ONE_MONTH_MS);
-      return `${numYears} year${numYears === 1 ? '' : 's'} ${numMonths} month${numMonths === 1 ? '' : 's'}`;
+      return `${numYears} year${numYears === 1 ? '' : 's'}, ${numMonths} month${numMonths === 1 ? '' : 's'}`;
     }
   }  
 

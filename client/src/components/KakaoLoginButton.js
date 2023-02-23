@@ -6,7 +6,7 @@ const KakaoLoginButton = () => {
   const handleKaKaoLogin = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/kakao`,
+        `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/kakao`,
         {},
         { withCredentials: true }
       );

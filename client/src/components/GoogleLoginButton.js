@@ -6,7 +6,7 @@ const GoogleLoginButton = () => {
   const handleGoogleLogin = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/google`,
+        `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/google`,
         {},
         { withCredentials: true }
       );

@@ -7,7 +7,7 @@
       "view" : 2,
       "createdAt" : "2023-02-23T13:05:48.245Z",
       "modifiedAt": "2023-02-23T17:05:48.245Z",
-      "memberId": "1",
+      "author": "1",
       
       "tags": ["career", "chatgpt", "ai"],        
       "reputation": "12.2k",        
@@ -22,7 +22,7 @@
       "view" : 2,
       "createdAt" : "2023-02-23T13:05:48.245Z",
       "modifiedAt": "2023-02-23T17:05:48.245Z",
-      "memberId": "1",
+      "author": "1",
       "tags": ["career", "chatgpt", "ai"],
       "votes": 3
   },
@@ -33,7 +33,7 @@
       "view" : 2,
       "createdAt" : "2023-02-23T13:05:48.245Z",
       "modifiedAt": "2023-02-23T17:05:48.245Z",
-      "memberId": "1",
+      "author": "1",
       "tags": ["career", "chatgpt", "ai"]
   
   }

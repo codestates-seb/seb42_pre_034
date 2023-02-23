@@ -56,7 +56,9 @@ const sessionLogin = (id, password) => {
   if (checkValid()) return axios.post(`${process.env.REACT_APP_SERVER_URL}/sessionLogin`, {
     id: id,
     password: password
-  })
+  },
+  { withCredentials: true }
+  )
   .then(response => {
     // 로그인 성공 시 처리할 로직
     window.location.href = response.data.redirectUrl;

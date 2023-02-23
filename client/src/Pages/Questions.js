@@ -24,7 +24,7 @@ const Questions = () => {
         <StackButton label="Ask Question" />
         <p className="text-xl text-left text-black">4 questions</p>
       </div>
-      {dummy.post.map((data) => (
+      {dummy.questions.map((data) => (
         <div
           key={data.id}
           className="flex flex-col justify-center w-[1050px] h-[150px]  border-t-[3px] border-[#f1f2f3]"

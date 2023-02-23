@@ -12,12 +12,13 @@ function Home() {
     <div className="flex w-[1200px] h-screen">
       <Menu />
       <Routes>
-        <Route path="*" element={<Questions />} />
+        <Route exact path="/" element={<Questions />} />
+        <Route path="/questions" element={<Questions />} />
         <Route path="/tags" element={<Tags />} />
         <Route path="/users" element={<Users />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/post" element={<Post />} />
+        <Route path="/:id" element={<Post />} />
       </Routes>
     </div>
   );

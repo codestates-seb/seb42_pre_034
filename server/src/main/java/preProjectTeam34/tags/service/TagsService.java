@@ -1,10 +1,14 @@
 package preProjectTeam34.tags.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import preProjectTeam34.exception.BusinessLogicException;
 import preProjectTeam34.exception.ExceptionCode;
 import preProjectTeam34.tags.entity.Tags;
+import preProjectTeam34.tags.tagsPage.TagsPageRequest;
 import preProjectTeam34.tags.tagsRepository.TagsRepository;
 
 import javax.transaction.Transactional;
@@ -26,6 +30,10 @@ public class TagsService {
         return tagsRepository.findAllByNameIn(
                 tagNames.stream().map(String::toLowerCase).collect(Collectors.toList())
         );
+    }
+
+    public Page<Tags> findAll(TagsPageRequest pageRequest){
+        return tagsRepository.findAllByOrderByNameAsc(pageRequest.unsorted());
     }
 
     private Tags findExistsTagsBy(String tagName){

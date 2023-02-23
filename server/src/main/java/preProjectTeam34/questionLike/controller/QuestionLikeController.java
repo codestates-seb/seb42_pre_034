@@ -26,7 +26,7 @@ public class QuestionLikeController {
 
     }
 
-    @DeleteMapping("/upvote")
+    @DeleteMapping("/downvote")
     public ResponseEntity<?> deleteLike(@RequestBody @Valid QuestionLikeDto questionLikeDto, @PathVariable("question-id") long questionId) throws Exception{
 
         questionLikeService.deleteLike(questionLikeDto);

@@ -23,8 +23,8 @@ spring:
             - email
             - profile
         naver:
-          client-id: ${NAVER_CLIENT_ID}
-          client-secret: ${NAVER_CLIENT_SECRET}
+          client-id: r6myU9ARNh3UD4spf1tJ
+          client-secret: OicBRO_kJr
           scope:
             - nickname
             - email

@@ -11,6 +11,7 @@ public class TagsDto {
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
     public static class Response{
         private Long tagsId;
+
         private String name;
         private String content;
     }

@@ -13,10 +13,13 @@ public class Tags {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tagsId", updatable = false)
     private Long tagsId;
 
+    @Column(name = "name", unique = true, updatable = false, nullable = false)
     private String name;
 
+    @Column(name = "content")
     private String content;
 
     public Tags(Long tagsId, String name, String content){

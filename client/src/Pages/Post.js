@@ -1,4 +1,4 @@
-import AskQuestion from '../components/AskQuestion';
+import StackButton from '../components/StackButton';
 
 /**
  * 질문 클릭 시 표시되는 상세 페이지
@@ -8,7 +8,9 @@ import AskQuestion from '../components/AskQuestion';
 function Post() {
   return (
     <>
-      <AskQuestion />
+      This post id is 
+      <StackButton label="Ask Question" />
+      <StackButton label="Post Your Answer" />
     </>
   )
 }

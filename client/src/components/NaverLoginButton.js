@@ -1,35 +1,23 @@
 /* eslint-disable */
 import { useRef,useEffect } from 'react';
+import axios from "axios";
 import ic_naver from '../assets/icon_naver.png';
 
 const NaverLoginButton = () => {
-  const naverRef = useRef(null);
-  const { naver } = window;
-
-  const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID// 발급 받은 Client ID 입력 
-	const NAVER_CALLBACK_URL = process.env.REACT_APP_NAVER_CALLBACK_URL // 작성했던 Callback URL 입력
-
-  const initializeNaverLogin = () => {
-    const naverLogin = new naver.LoginWithNaverId({
-      clientId: NAVER_CLIENT_ID,
-      callbackUrl: NAVER_CALLBACK_URL,
-      isPopup: false,
-      loginButton: { color: 'green', type: 3, height: 60 },
-    });
-    naverLogin.init();
-  };
-
-  useEffect(() => {
-    initializeNaverLogin();
-  }, [])
-
-  const handleNaverLogin = () => {    
-    naverRef.current.children[0].click();
+  
+  const handleNaverLogin = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/naver`,{},{withCredentials: true});
+      // 네이버 소셜로그인 창으로 이동합니다.
+      window.location.href = response.data.redirectUrl;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
-      <button ref={naverRef} id="naverIdLogin" className='hidden' />
+      {/* <button ref={naverRef} id="naverIdLogin" className='hidden' /> */}
       <button
         className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-[#22c75a] border-[0.5px] border-[#9fa6ad]"
         onClick={handleNaverLogin}

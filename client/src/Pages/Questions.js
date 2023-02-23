@@ -1,5 +1,7 @@
 import cool from '../assets/cool.png';
 import dummy from '../assets/dummy.json';
+import StackButton from '../components/StackButton';
+import { Link } from 'react-router-dom';
 /*
  게시글 페이지 구현
 게시글 페이지를 구현하기 위해 게시글 컴포넌트를 먼저 구현해야 합니다.
@@ -19,14 +21,10 @@ const Questions = () => {
         <p className="text-[32px] font-medium text-left text-black">
           All Questions
         </p>
-        <div className="float-right w-[100px] h-10 relative overflow-hidden gap-2.5 py-2.5 rounded-[10px] bg-[#601bb3]">
-          <p className="text-[13px] font-bold text-center text-white">
-            Ask Question
-          </p>
-        </div>
+        <StackButton label="Ask Question" />
         <p className="text-xl text-left text-black">4 questions</p>
       </div>
-      {dummy.post.map((data) => (
+      {dummy.questions.map((data) => (
         <div
           key={data.id}
           className="flex flex-col justify-center w-[1050px] h-[150px]  border-t-[3px] border-[#f1f2f3]"
@@ -40,7 +38,9 @@ const Questions = () => {
             </div>
 
             <div className="flex flex-col pr-5">
-              <span className=" text-left text-[#0075cf]"> {data.title}</span>
+              <Link to={`/${data.id}`}>
+                <span className=" text-left text-[#0075cf]"> {data.title}</span>
+              </Link>
               <span className="text-left text-black">{data.content}</span>
 
               <div className="flex flex-row justify-between">

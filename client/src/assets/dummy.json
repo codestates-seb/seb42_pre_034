@@ -1,13 +1,13 @@
 
 {
-  "post":[{
+  "questions":[{
       "id": 1,
       "title": "How to write better code than ChatGPT",
       "content": "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
       "view" : 2,
-      "createdAt" : "0000-00-00",
-      "modifiedAt": "modified 1 mins ago",
-      "memberId": "1",
+      "createdAt" : "2023-02-23T13:05:48.245Z",
+      "modifiedAt": "2023-02-23T17:05:48.245Z",
+      "author": "1",
       
       "tags": ["career", "chatgpt", "ai"],        
       "reputation": "12.2k",        
@@ -20,21 +20,20 @@
       "title": "How to write better code than ChatGPT",
       "content": "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
       "view" : 2,
-      "createdAt" : "0000-00-00",
-      "modifiedAt": "modified 1 mins ago",
-      "memberId": "1",
-      "tags": ["career", "chatgpt", "ai"]
-      
+      "createdAt" : "2023-02-23T13:05:48.245Z",
+      "modifiedAt": "2023-02-23T17:05:48.245Z",
+      "author": "1",
+      "tags": ["career", "chatgpt", "ai"],
+      "votes": 3
   },
   {
-  
       "id": 3,
       "title": "How to write better code than ChatGPT",
       "content": "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
       "view" : 2,
-      "createdAt" : "0000-00-00",
-      "modifiedAt": "modified 1 mins ago",
-      "memberId": "1",
+      "createdAt" : "2023-02-23T13:05:48.245Z",
+      "modifiedAt": "2023-02-23T17:05:48.245Z",
+      "author": "1",
       "tags": ["career", "chatgpt", "ai"]
   
   }

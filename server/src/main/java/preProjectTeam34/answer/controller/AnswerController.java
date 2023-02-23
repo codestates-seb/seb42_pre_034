@@ -36,7 +36,7 @@ public class AnswerController {
         this.mapper = answerMapper;
     }
 //TODO: Path variable, validation 추가.
-    @PostMapping("questions/{question-id}/answers")
+    @PostMapping("questions/{question-id}/answers/submit")
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
                                      @Valid @RequestBody AnswerPostDto answerPostDto) {
 

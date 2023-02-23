@@ -1,5 +1,9 @@
 import StackButton from '../components/StackButton';
 import PostBlock from '../components/post-components/PostBlock';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Loading from '../components/Loading';
 
 /**
  * 질문 클릭 시 표시되는 상세 페이지
@@ -7,12 +11,23 @@ import PostBlock from '../components/post-components/PostBlock';
  */
 
 function Post() {
-  const dummyContent = {
-    body: "I want to be a very valuable front-end engineer. How do you do that? I think about it. If I can write better code than ChatGPT, will I become a very valuable front-end engineer",
-    votes: -1,
-    tags: ["career", "chatgpt", "ai"],
-    author: "dev4jaehunkim"
-  }
+  const params = useParams();
+  const [postContent, setPostContent] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  // 페이지 이동 후 화면 표시
+  useEffect(() => {
+    axios.get(`http://localhost:8000/questions/${params.id}`)
+      .then((res) => {
+        setPostContent(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
+
+  if (isLoading) return <Loading />
 
   return (
     <div className='flex flex-col w-full px-8'>
@@ -42,10 +57,9 @@ function Post() {
         </div>
       </header>
       <article className='flex flex-col border-t-[3px] border-[#f1f2f3] pt-4'>
-        <PostBlock content={dummyContent} />
+        <PostBlock content={postContent} />
         <StackButton label="Post Your Answer" />
       </article>
-      
     </div>
   )
 }

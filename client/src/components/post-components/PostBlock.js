@@ -2,7 +2,7 @@ import { useState } from "react";
 import {ReactComponent as UpVote} from "../../assets/ic_upvote.svg";
 import {ReactComponent as DownVote} from "../../assets/ic_downvote.svg";
 
-function Vote({fetchedVote}) {
+function Vote({ fetchedVote }) {
   const [vote, setVote] = useState(fetchedVote);
   
   return (
@@ -23,8 +23,6 @@ function BlockBody({fetchedBody}) {
 }
 
 function PostBlock({content}) {
-  console.log(content);
-
   return (
     <div className="flex">
       <Vote fetchedVote={content.votes} />

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { ReactComponent as IC_kakao } from '../assets/ic_kakao.svg';
-import { ReactComponent as IC_google } from '../assets/ic_google.svg';
 import { ReactComponent as IC_stackoverflow } from '../assets/ic_stackoverflow.svg';
 import { ReactComponent as IC_share } from '../assets/ic_share.svg';
 import { LOGIN_MESSAGES } from '../constants/constants';
+import GoogleLoginButton from '../components/GoogleLoginButton';
+import KakaoLoginButton from '../components/KakaoLoginButton';
 import NaverLoginButton from '../components/NaverLoginButton'
 
 const Login = () => {
@@ -59,18 +59,8 @@ const Login = () => {
         <IC_stackoverflow />
       </div>
       <div className="flex flex-col justify-start items-start w-[288.45px] h-[158px] left-[0.23px] top-[61px] gap-1 py-1">
-        <div className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-white border-[0.5px] border-[#9fa6ad]">
-          <IC_google />
-          <p className="flex-grow-0 flex-shrink-0 text-[13px] font-medium text-center text-[#3b4045]">
-            Log in with Google
-          </p>
-        </div>
-        <div className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-[#fee500] border-[0.5px] border-[#9fa6ad]">
-          <IC_kakao />
-          <p className="flex-grow-0 flex-shrink-0 text-[13px] font-medium text-center text-[#3b4045]">
-            Log in with KaKao
-          </p>
-        </div>
+        <GoogleLoginButton />
+        <KakaoLoginButton />
         <NaverLoginButton />
       </div>
 

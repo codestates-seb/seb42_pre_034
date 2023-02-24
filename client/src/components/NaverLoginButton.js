@@ -1,7 +1,6 @@
 /* eslint-disable */
-import { useRef,useEffect } from 'react';
 import axios from "axios";
-import ic_naver from '../assets/icon_naver.png';
+import IC_LOGIN_NAVER from '../assets/ic_login_naver.png';
 
 const NaverLoginButton = () => {
   
@@ -23,7 +22,7 @@ const NaverLoginButton = () => {
         onClick={handleNaverLogin}
       >
         <img
-          src={ic_naver}
+          src={IC_LOGIN_NAVER}
           className="flex-grow-0 flex-shrink-0 w-[18px] h-[16.2px] object-cover"
           alt=""
         />

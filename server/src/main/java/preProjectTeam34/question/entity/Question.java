@@ -31,17 +31,14 @@ public class Question extends Auditable {
     @Column(nullable = false)
     private int view;
 
-
     public Question(String title, String content){
         this.title = title;
         this.content = content;
     }
 
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST)
     private List<QuestionComment> questionComments = new ArrayList<>();
-
-
-
 //    private String searchType;
 
 //    private String keyWord;

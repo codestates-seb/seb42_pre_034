@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { ReactComponent as IC_kakao } from '../assets/ic_kakao.svg';
-import { ReactComponent as IC_google } from '../assets/ic_google.svg';
 import { ReactComponent as IC_stackoverflow } from '../assets/ic_stackoverflow.svg';
 import { ReactComponent as IC_share } from '../assets/ic_share.svg';
-import ic_naver from '../assets/icon_naver.png';
 import { LOGIN_MESSAGES } from '../constants/constants';
+import GoogleLoginButton from '../components/GoogleLoginButton';
+import KakaoLoginButton from '../components/KakaoLoginButton';
+import NaverLoginButton from '../components/NaverLoginButton'
+import axios from 'axios';
 
 const Login = () => {
   const [id, setId] = useState('');
@@ -46,40 +47,38 @@ const Login = () => {
 
   function handleLogin(e) {
     e.preventDefault();
-    if(checkValid()) {
-      setMessage({id: '', password: ''})
-
-    }
+    sessionLogin(id,password)
   }
 
+const sessionLogin = (id, password) => {
+  setMessage({id: '', password: ''})
+  // eslint-disable-next-line no-undef
+  if (checkValid()) return axios.post(`${process.env.REACT_APP_SERVER_URL}/sessionLogin`, {
+    id: id,
+    password: password
+  },
+  { withCredentials: true }
+  )
+  .then(response => {
+    // 로그인 성공 시 처리할 로직
+    window.location.href = response.data.redirectUrl;
+  })
+  .catch(error => {
+    // 로그인 실패 시 처리할 로직
+    console.log(error)
+  });
+};
+
   return (
+    <div className='bg-[#f1f2f3] w-[100%] h-[100%] flex justify-center items-start pt-[120px]'>
     <div className="w-[288.45px] h-[555.2px] relative flex flex-col select-none">
       <div className="flex justify-center items-start w-[288.45px] h-[61px] left-0 top-0">
         <IC_stackoverflow />
       </div>
       <div className="flex flex-col justify-start items-start w-[288.45px] h-[158px] left-[0.23px] top-[61px] gap-1 py-1">
-        <div className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-white border-[0.5px] border-[#9fa6ad]">
-          <IC_google />
-          <p className="flex-grow-0 flex-shrink-0 text-[13px] font-medium text-center text-[#3b4045]">
-            Log in with Google
-          </p>
-        </div>
-        <div className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-[#fee500] border-[0.5px] border-[#9fa6ad]">
-          <IC_kakao />
-          <p className="flex-grow-0 flex-shrink-0 text-[13px] font-medium text-center text-[#3b4045]">
-            Log in with KaKao
-          </p>
-        </div>
-        <div className="cursor-pointer flex justify-start items-center flex-grow-0 flex-shrink-0 w-[288.45px] h-[37.8px] gap-[7px] px-[82px] py-[9px] rounded-[5px] bg-[#22c75a] border-[0.5px] border-[#9fa6ad]">
-          <img
-            src={ic_naver}
-            className="flex-grow-0 flex-shrink-0 w-[18px] h-[16.2px] object-cover"
-            alt=""
-          />
-          <p className="flex-grow-0 flex-shrink-0 text-[13px] font-medium text-center text-white">
-            Log in with Naver
-          </p>
-        </div>
+        <GoogleLoginButton />
+        <KakaoLoginButton />
+        <NaverLoginButton />
       </div>
 
       <form
@@ -150,6 +149,7 @@ const Login = () => {
           <IC_share className="" />
         </div>
       </div>
+    </div>
     </div>
   );
 };

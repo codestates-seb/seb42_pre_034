@@ -56,8 +56,11 @@ public class QuestionService {
 
     public void deleteQuestion(long questionId){
         Question findQuestion = findVerifiedQuestion(questionId);
+        findQuestion.setQuestionStatus(Question.QuestionStatus.QUESTION_DELETE);
 
-        questionRepository.delete(findQuestion);
+        questionRepository.save(findQuestion);
+
+//        questionRepository.delete(findQuestion);
     }
 
     public Question findVerifiedQuestion(Long questionId){

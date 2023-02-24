@@ -8,6 +8,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname+"/build/index.html"));
 });
 
-const port = 5000;
+const port = 5050;
 app.listen(port);
 console.log(`app listening ${port}`);

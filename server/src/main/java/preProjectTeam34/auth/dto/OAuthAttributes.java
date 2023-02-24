@@ -29,8 +29,10 @@ public class OAuthAttributes {
             return ofGoogle(userNameAttributeName, attributes);
         } else if (registrationId.equals("naver")) {
             return ofNaver("id", attributes);
+        } else if (registrationId.equals("kakao")){
+            return ofKakao("id", attributes);
         }
-        return ofGoogle(userNameAttributeName, attributes); // 추후 수정해야함
+        return null;
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
@@ -51,6 +53,18 @@ public class OAuthAttributes {
                 .email((String) response.get("email"))
                 .picture((String) response.get("profile_image"))
                 .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
+    private static OAuthAttributes ofKakao(String userNameAttributeName, Map<String, Object> attributes) {
+        Map<String, Object> account = (Map<String, Object>) attributes.get("kakao_account");
+        Map<String, Object> profile = (Map<String, Object>) account.get("profile");
+        return OAuthAttributes.builder()
+                .name((String) profile.get("nickname"))
+                .email((String) account.get("email"))
+                .picture((String) profile.get("profile_image_url"))
+                .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }

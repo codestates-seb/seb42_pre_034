@@ -1,0 +1,16 @@
+{
+  "name": "fe-host-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "cp -rf ../client/build ./",
+    "start": "sudo ../frontend_deploy.sh"
+  },
+  "author": "dev4jaehunkim",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

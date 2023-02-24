@@ -6,8 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import preProjectTeam34.audit.Auditable;
+import preProjectTeam34.questioncomment.entity.QuestionComment;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,6 +36,9 @@ public class Question extends Auditable {
         this.content = content;
     }
 
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST)
+    private List<QuestionComment> questionComments = new ArrayList<>();
 //    private String searchType;
 
 //    private String keyWord;

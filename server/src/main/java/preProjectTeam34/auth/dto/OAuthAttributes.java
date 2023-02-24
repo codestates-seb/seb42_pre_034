@@ -29,8 +29,10 @@ public class OAuthAttributes {
             return ofGoogle(userNameAttributeName, attributes);
         } else if (registrationId.equals("naver")) {
             return ofNaver("id", attributes);
+        } else if (registrationId.equals("kakao")){
+            return ofKakao("id", attributes);
         }
-        return ofGoogle(userNameAttributeName, attributes); // 추후 수정해야함
+        return null;
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {

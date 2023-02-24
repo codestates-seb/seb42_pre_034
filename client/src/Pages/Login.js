@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ReactComponent as IC_stackoverflow } from '../assets/ic_stackoverflow.svg';
-import { ReactComponent as IC_share } from '../assets/ic_share.svg';
+import { ReactComponent as IC_LOGIN_STACKOVERFLOW } from '../assets/ic_login_stackoverflow.svg';
+import { ReactComponent as IC_LOGIN_SHARE } from '../assets/ic_login_share.svg';
 import { LOGIN_MESSAGES } from '../constants/constants';
 import GoogleLoginButton from '../components/GoogleLoginButton';
 import KakaoLoginButton from '../components/KakaoLoginButton';
@@ -73,7 +73,7 @@ const sessionLogin = (id, password) => {
     <div className='bg-[#f1f2f3] w-[100%] h-[100%] flex justify-center items-start pt-[120px]'>
     <div className="w-[288.45px] h-[555.2px] relative flex flex-col select-none">
       <div className="flex justify-center items-start w-[288.45px] h-[61px] left-0 top-0">
-        <IC_stackoverflow />
+        <IC_LOGIN_STACKOVERFLOW />
       </div>
       <div className="flex flex-col justify-start items-start w-[288.45px] h-[158px] left-[0.23px] top-[61px] gap-1 py-1">
         <GoogleLoginButton />
@@ -146,7 +146,7 @@ const sessionLogin = (id, password) => {
           <span className="text-[13px] text-center text-[#0075cf] whitespace-nowrap">
             Sign up on Talent
           </span>
-          <IC_share className="" />
+          <IC_LOGIN_SHARE className="" />
         </div>
       </div>
     </div>

@@ -17,6 +17,9 @@ import preProjectTeam34.auth.CustomOAuth2UserService;
 import preProjectTeam34.auth.handler.OAuth2AuthenticationFailureHandler;
 import preProjectTeam34.auth.handler.OAuth2AuthenticationSuccessHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity(debug = false)
 public class SecurityConfig {
@@ -60,7 +63,10 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.addAllowedOrigin("http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:5050");
+//        corsConfiguration.addAllowedOrigin("http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:5050");
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
         corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

@@ -11,7 +11,7 @@ import { ReactComponent as IC_HEADER_SEARCH } from '../assets/ic_header_search.s
 
 
 function Header() {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(true);
   const hideRef = useRef([]);
   const searchRef = useRef(null);
 
@@ -55,15 +55,15 @@ function Header() {
           <button ref={(ref) => hideRef.current[5] = ref} className='header_right_btn'><IC_HEADER_ACHIEVEMENTS /></button>
           <button ref={(ref) => hideRef.current[6] = ref} className='header_right_btn'><IC_HEADER_HELP /></button>
           <button ref={(ref) => hideRef.current[7] = ref} className='header_right_btn'><IC_HEADER_STACKEXCHANGE /></button>
-        <button ref={(ref) => hideRef.current[8] = ref}
+        <Link to='/login'><button ref={(ref) => hideRef.current[8] = ref}
         className="flex justify-center items-center w-[59.46px] h-[33px] px-2.5 py-3.5 rounded-[3px] bg-[#e1ecf4] border-[0.5px] border-[#7aa7c7]" >
           <p className="header_login_font text-[#39739d]">Log in</p>
         </button>
+        </Link>
         <button ref={(ref) => hideRef.current[9] = ref}
         className="flex justify-center items-center w-[68.45px] h-[33px] ml-[4px] px-[11px] py-3.5 rounded-[3px] bg-[#0a95ff] border-[0.5px] border-[#349eef]">
           <p className="header_login_font text-white">Sign up</p>
         </button>
-
       </div>
         </div>
     </>

@@ -1,20 +1,9 @@
 /* eslint-disable */
-import axios from 'axios';
 import { ReactComponent as IC_LOGIN_KAKAO } from '../assets/ic_login_kakao.svg';
 
 const KakaoLoginButton = () => {
   const handleKaKaoLogin = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/kakao`,
-        {},
-        { withCredentials: true }
-      );
-      // 카카오 소셜로그인 창으로 이동합니다.
-      window.location.href = response.data.redirectUrl;
-    } catch (error) {
-      console.log(error);
-    }
+    window.location.href = `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/kakao`;
   };
 
   return (

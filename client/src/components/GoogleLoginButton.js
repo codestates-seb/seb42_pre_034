@@ -1,20 +1,9 @@
 /* eslint-disable */
-import axios from 'axios';
 import { ReactComponent as IC_LOGIN_GOOGLE } from '../assets/ic_login_google.svg';
 
 const GoogleLoginButton = () => {
   const handleGoogleLogin = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/google`,
-        {},
-        { withCredentials: true }
-      );
-      // 구글 소셜로그인 창으로 이동합니다.
-      window.location.href = response.data.redirectUrl;
-    } catch (error) {
-      console.log(error);
-    }
+    window.location.href = `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/google`;
   };
 
   return (

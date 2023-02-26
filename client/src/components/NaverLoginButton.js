@@ -1,17 +1,10 @@
 /* eslint-disable */
-import axios from "axios";
 import IC_LOGIN_NAVER from '../assets/ic_login_naver.png';
 
 const NaverLoginButton = () => {
   
-  const handleNaverLogin = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/naver`,{},{withCredentials: true});
-      // 네이버 소셜로그인 창으로 이동합니다.
-      window.location.href = response.data.redirectUrl;
-    } catch (error) {
-      console.log(error);
-    }
+  const handleNaverLogin = () => {
+    window.location.href = `${process.env.REACT_APP_SERVER_URL}/oauth2/authorization/naver`;
   };
 
   return (

@@ -1,14 +1,11 @@
 package preProjectTeam34.auth.config;
 
-import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
-import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -17,8 +14,7 @@ import preProjectTeam34.auth.CustomOAuth2UserService;
 import preProjectTeam34.auth.handler.OAuth2AuthenticationFailureHandler;
 import preProjectTeam34.auth.handler.OAuth2AuthenticationSuccessHandler;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity(debug = false)
@@ -44,8 +40,7 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .formLogin().disable()
                 .csrf().disable()
-                .cors().configurationSource(corsConfigurationSource())
-                .and()
+                .cors(Customizer.withDefaults())
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -60,18 +55,12 @@ public class SecurityConfig {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-
-//        corsConfiguration.addAllowedOrigin("http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:5050");
-//        corsConfiguration.addAllowedOrigin("*");
-        corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addAllowedMethod("*");
-        corsConfiguration.addAllowedOriginPattern("*");
-        corsConfiguration.setAllowCredentials(true);
-
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PATCH", "DELETE"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration);
+        source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }

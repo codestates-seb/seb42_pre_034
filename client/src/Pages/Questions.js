@@ -2,6 +2,8 @@ import cool from '../assets/cool.png';
 import dummy from '../assets/dummy.json';
 import StackButton from '../components/StackButton';
 import { Link } from 'react-router-dom';
+
+
 /*
  게시글 페이지 구현
 게시글 페이지를 구현하기 위해 게시글 컴포넌트를 먼저 구현해야 합니다.
@@ -21,7 +23,10 @@ const Questions = () => {
         <p className="text-[32px] font-medium text-left text-black">
           All Questions
         </p>
-        <StackButton label="Ask Question" />
+        {/* Link to 추가 */}
+        <Link to={'/ask'}>
+          <StackButton label="Ask Question"/>
+        </Link>
         <p className="text-xl text-left text-black">4 questions</p>
       </div>
       {dummy.questions.map((data) => (

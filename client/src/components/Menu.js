@@ -80,6 +80,16 @@ function Menu() {
           selectMenu={selectMenu}
           isSelected={isSelected}
         />
+        <MenuItem
+          label="Loading"
+          selectMenu={selectMenu}
+          isSelected={isSelected}
+        />
+        <MenuItem
+          label="Post"
+          selectMenu={selectMenu}
+          isSelected={isSelected}
+        />
       </ul>
     </>
   );

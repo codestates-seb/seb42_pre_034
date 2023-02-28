@@ -3,8 +3,12 @@ package preProjectTeam34.question.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import preProjectTeam34.question.entity.Question;
+import preProjectTeam34.questioncomment.dto.QuestionCommentDto;
+import preProjectTeam34.questioncomment.entity.QuestionComment;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import java.util.List;
 
 public class QuestionDto {
 
@@ -16,6 +20,8 @@ public class QuestionDto {
 
         @NotBlank(message = "내용을 입력해주세요.")
         private String content;
+
+        private List<QuestionComment> questionComments;
     }
 
     @Getter
@@ -43,6 +49,8 @@ public class QuestionDto {
         private String content;
         private int view;
         private Question.QuestionStatus questionStatus;
+
+        private List<QuestionCommentDto.Response> questionComments;
 
         public String getQuestionStatus(){
             return questionStatus.getStatus();

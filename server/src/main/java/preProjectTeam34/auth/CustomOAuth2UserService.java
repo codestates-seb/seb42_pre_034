@@ -39,47 +39,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        Member.MemberStatus memberStatus = getMemberStatus(registrationId);
-        Member member = saveOrUpdate(attributes, memberStatus);
-
-        httpSession.setAttribute("user", new SessionUser(member));
-
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(Member.Role.USER.getKey())), attributes.getAttributes(), attributes.getNameAttributeKey());
-    }
-
-    private Member saveOrUpdate(OAuthAttributes attributes, Member.MemberStatus memberStatus){
-        Optional<Member> member = memberRepository.findByEmail(attributes.getEmail());
-        if(member.isPresent()){ // Member 테이블에 이미 이메일이 있다면
-            return member.get();
-        }else{ // Member 테이블에 이메일이 없다면
-            Member newMember = Member.builder()
-                    .email(attributes.getEmail())
-                    .password(makeTempPassword())
-                    .nickName(attributes.getName())
-                    .memberStatus(memberStatus)
-                    .roles(List.of(Member.Role.GUEST.getTitle(), Member.Role.USER.getTitle()))
-                    .picture(attributes.getPicture())
-                    .build();
-            return memberRepository.save(newMember);
-        }
-    }
-
-    private String makeTempPassword(){
-        RandomString randomString = new RandomString(35);
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.encode(randomString.toString());
-    }
-
-    private Member.MemberStatus getMemberStatus(String registrationId){
-        if("google".equals(registrationId)){
-            return Member.MemberStatus.GOOGLE_LOGIN;
-        }else if("naver".equals((registrationId))){
-            return Member.MemberStatus.NAVER_LOGIN;
-        }else if("kakao".equals(registrationId)){
-            return Member.MemberStatus.KAKAO_LOGIN;
-        }else{
-            // null인 상황은 예외를 던져주어야한다.
-            return null;
-        }
     }
 }

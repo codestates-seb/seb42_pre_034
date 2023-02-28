@@ -15,3 +15,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.header_right_btn {
+  @apply flex justify-center items-center w-[38px] h-[47px] hover:bg-[#E3E6E8]
+}
+
+.header_left_btn {
+  @apply flex justify-center items-center h-[29px] mr-2 px-[12px] rounded-[1000px] hover:bg-[#E3E6E8] whitespace-nowrap
+}
+
+.header_left_btn_font {
+  @apply flex text-xs text-center text-[#525960]
+}
+
+.header_user_btn {
+  @apply flex flex-nowrap px-[12px] justify-center items-center w-[64px] h-[47px] hover:bg-[#E3E6E8] gap-1.5 text-xs text-center text-[#525960] 
+}
+
+.header_login_font {
+  @apply flex-grow-0 flex-shrink-0 font-medium text-[13px] text-center
+}

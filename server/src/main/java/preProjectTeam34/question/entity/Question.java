@@ -35,8 +35,6 @@ public class Question extends Auditable {
         this.title = title;
         this.content = content;
     }
-
-
     @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST)
     private List<QuestionComment> questionComments = new ArrayList<>();
 //    private String searchType;
@@ -46,7 +44,6 @@ public class Question extends Auditable {
     @Enumerated(value = EnumType.STRING)
     @Column(length = 30, nullable = false)
     private QuestionStatus questionStatus = QuestionStatus.QUESTION_REGISTRATION;
-
 
 //    private Member member;
 

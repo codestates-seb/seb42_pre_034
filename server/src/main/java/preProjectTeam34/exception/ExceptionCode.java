@@ -6,8 +6,8 @@ public enum ExceptionCode {
 
     QUESTION_NOT_FOUND(404, "Question Not Found"),
     QUESTION_DELETE(409, "Question Delete"),
-    ANSWER_NOT_FOUND(404, "Answer Not Found");
-
+    ANSWER_NOT_FOUND(404, "Answer Not Found"),
+    COMMENT_NOT_FOUND(404, "Comment Not Found");
 
     @Getter
     private int status;

@@ -6,11 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import preProjectTeam34.audit.Auditable;
+import preProjectTeam34.questionLike.entity.QuestionLike;
 import preProjectTeam34.questioncomment.entity.QuestionComment;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,8 +38,6 @@ public class Question extends Auditable {
         this.title = title;
         this.content = content;
     }
-
-
     @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST)
     private List<QuestionComment> questionComments = new ArrayList<>();
 //    private String searchType;
@@ -47,8 +48,14 @@ public class Question extends Auditable {
     @Column(length = 30, nullable = false)
     private QuestionStatus questionStatus = QuestionStatus.QUESTION_REGISTRATION;
 
-
 //    private Member member;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<QuestionLike> likes = new HashSet<>();
+
+    public Question(Long questionId) {
+        this.questionId = questionId;
+    }
 
 
     public enum QuestionStatus{

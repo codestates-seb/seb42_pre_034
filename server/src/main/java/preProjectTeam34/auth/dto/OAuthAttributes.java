@@ -26,7 +26,7 @@ public class OAuthAttributes {
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         if(registrationId.equals("google")){
-            return ofGoogle(userNameAttributeName, attributes);
+            return ofGoogle("sub", attributes);
         } else if (registrationId.equals("naver")) {
             return ofNaver("id", attributes);
         } else if (registrationId.equals("kakao")){

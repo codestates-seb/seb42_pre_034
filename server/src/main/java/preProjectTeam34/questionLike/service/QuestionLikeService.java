@@ -12,53 +12,48 @@ import preProjectTeam34.questionLike.entity.QuestionLike;
 import preProjectTeam34.questionLike.repository.QuestionLikeRepository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class QuestionLikeService {
 
     private final QuestionLikeRepository questionLikeRepository;
-    private final MemberRepository memberRepository;
-    private final QuestionRepository questionRepository;
+    public QuestionLikeService(QuestionLikeRepository questionLikeRepository){
+        this.questionLikeRepository = questionLikeRepository;
+    }
 
     @Transactional
-    public void insertLike(QuestionLikeDto questionLikeDto) throws Exception{
+    public void toggleLike(Long questionId, Member member, boolean likeState){
+        Question question = new Question(questionId);
+        Optional<QuestionLike> optionalQuestionLike = QuestionLikeRepository.findByQuestionAndMember(question, member);
+        QuestionLike questionLike;
 
-        Member member = memberRepository.findById(questionLikeDto.getMemberId())
-                .orElseThrow(() -> new RuntimeException("--"));
-
-        Question question = questionRepository.findById(questionLikeDto.getQuestionId())
-                .orElseThrow(() -> new RuntimeException("--"));
-        //RuntimeException 부분 임시... 따로 예외처리 필요
-
-        if(questionLikeRepository.findByMemberAndQuestion(member, question).isPresent()){
-            //좋아요 이미 되있을 경우 에외처리
+        if(optionalQuestionLike.isPresent()){
+            questionLike = optionalQuestionLike.get();
+            if(questionLike.isLikeState() == likeState){
+                questionLikeRepository.delete(questionLike);
+            }
+            else{
+                questionLike.setLikeState(likeState);
+                questionLikeRepository.save(questionLike);
+            }
         }
-
-        QuestionLike questionLike = QuestionLike.builder()
-                .question(question)
-                .member(member)
-                .build();
-
-        questionLikeRepository.save(questionLike);
-        // 좋아요 추가 questionRepository.
-
+        else{
+            questionLike = new QuestionLike(member, question, likeState);
+            questionLikeRepository.save(questionLike);
+        }
     }
 
-    @Transactional
-    public void deleteLike(QuestionLikeDto questionLikeDto) throws Exception{
-
-        Member member = memberRepository.findById(questionLikeDto.getMemberId())
-                .orElseThrow(() -> new RuntimeException("--"));
-
-        Question question = questionRepository.findById(questionLikeDto.getQuestionId())
-                .orElseThrow(() -> new RuntimeException("--"));
-
-        QuestionLike questionLike = questionLikeRepository.findByMemberAndQuestion(member, question)
-                .orElseThrow(() -> new RuntimeException("--"));
-        //RuntimeException 부분 임시... 따로 예외처리 필요
-
-        questionLikeRepository.delete(questionLike);
-        //좋아요 내리기 questionRepository.
+    public boolean isLiked(Long questionId, Member member){
+        Question question = new Question(questionId);
+        Optional<QuestionLike> optionalQuestionLike = QuestionLikeRepository.findByQuestionAndMember(question, member);
+        return optionalQuestionLike.isPresent() && optionalQuestionLike.get().isLikeState();
     }
+
+    public boolean isDisliked(Long questionId, Member member){
+        Question question = new Question(questionId);
+        Optional<QuestionLike> optionalQuestionLike = QuestionLikeRepository.findByQuestionAndMember(question, member);
+        return optionalQuestionLike.isPresent() && optionalQuestionLike.get().isLikeState();
+    }
+
 }

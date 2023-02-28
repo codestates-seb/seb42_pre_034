@@ -10,5 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface QuestionLikeRepository extends JpaRepository<QuestionLike, Long> {
-    Optional<QuestionLike> findByMemberAndQuestion(Member member, Question question);
+    static Optional<QuestionLike> findByQuestionAndMember(Question question, Member member) {
+        return Optional.empty();
+    }
 }

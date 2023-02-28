@@ -5,6 +5,7 @@ import Tags from './Tags';
 import Users from './Users';
 import Companies from './Companies';
 import Loading from "../components/Loading";
+import Ask from "./Ask";
 const Post = lazy(() => import('./Post'));
 import { lazy, Suspense } from "react";
 
@@ -21,6 +22,7 @@ function Home() {
           <Route path="/users" element={<Users />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/loading" element={<Loading />} />
+          <Route path="/ask" element={<Ask />} />
           <Route path="/:id" element={<Post />} />
         </Routes>
       </Suspense>

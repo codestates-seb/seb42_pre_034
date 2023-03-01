@@ -27,7 +27,7 @@ function PostBlock({content}) {
   return (
     <div className="flex">
       <Vote fetchedVote={content.votes} />
-      <div className="flex flex-col">
+      <div className="flex flex-col ml-8">
         <BlockBody fetchedBody={content.content} />
         {/* Question인 경우에만 Tag가 존재하기 때문에, 존재할 때만 TagList를 렌더링 */}
         {content.tags ? <TagList fetchedTags={content.tags} /> : ''}
@@ -38,7 +38,7 @@ function PostBlock({content}) {
             추후 구현
           </div>
         </div>
-        <p className="text-[#8B9197]">Add a comment</p>
+        <p className="text-[#8B9197] mb-8">Add a comment</p>
       </div>
     </div>
   )

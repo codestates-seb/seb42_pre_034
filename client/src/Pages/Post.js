@@ -43,7 +43,7 @@ function Post() {
   // 페이지 이동 후 화면 표시
   useEffect(() => {
     console.log(params);
-    axios.get(`http://localhost:8080/questions/${params.id}`)
+    axios.get(`http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:8080/questions/${params.id}`)
       .then((res) => {
         setPostContent(res.data.data);
         setIsLoading(false);

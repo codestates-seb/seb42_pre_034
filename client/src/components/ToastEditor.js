@@ -10,7 +10,7 @@ function ToastEditor() {
   // 등록 버튼 핸들러
   const handleRegisterButton = () => {
     
-    axios.post('http://localhost:8080/questions', {
+    axios.post('http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:8080/questions', {
       // 타이틀 작성하는 것이 없어 더미로 test title 입력
       title: "test title",
       //  입력한 내용을 MarkDown 형태로 취득

@@ -20,7 +20,7 @@ import axios from 'axios';
 const Questions = () => {
   const [questionList, setQuestionList] = useState(null)
   useEffect(() => {
-    axios.get('http://localhost:8080/questions', {
+    axios.get('http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:8080/questions', {
       params: {
         page: 1,
         size: 15

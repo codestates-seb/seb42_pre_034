@@ -8,6 +8,7 @@ import preProjectTeam34.questioncomment.entity.QuestionComment;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class QuestionDto {
@@ -50,7 +51,9 @@ public class QuestionDto {
         private int view;
         private Question.QuestionStatus questionStatus;
 
-        private List<QuestionCommentDto.Response> questionComments;
+        private LocalDateTime createdAt;
+
+        private List<QuestionComment> questionComments;
 
         public String getQuestionStatus(){
             return questionStatus.getStatus();

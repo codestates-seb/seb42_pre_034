@@ -72,7 +72,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
         String body = objectMapper.writeValueAsString(memberMapper.memberToMemberResponse(member));
         response.getWriter().write(body);
 
-        response.sendRedirect("http://localhost:3000");
+        response.sendRedirect("http://ec2-3-36-115-159.ap-northeast-2.compute.amazonaws.com:5050");
 
     }
 

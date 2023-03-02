@@ -20,7 +20,12 @@ import axios from 'axios';
 const Questions = () => {
   const [questionList, setQuestionList] = useState(null)
   useEffect(() => {
-    axios.get('http://localhost:8080/questions')
+    axios.get('http://localhost:8080/questions', {
+      params: {
+        page: 1,
+        size: 15
+      }
+    })
       .then(data => {
         setQuestionList(data.data);
       })
@@ -60,7 +65,7 @@ const Questions = () => {
         <Link to={'/ask'}>
           <StackButton label="Ask Question"/>
         </Link>
-        <p className="text-xl text-left text-black">4 questions</p>
+        <p className="text-xl text-left text-black">{questionList ? questionList.length : 0} questions</p>
       </div>
       {questionList && questionList.map((data) => (
         <div

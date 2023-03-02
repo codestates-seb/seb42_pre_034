@@ -1,7 +1,8 @@
 import cool from '../assets/cool.png';
-import dummy from '../assets/dummy.json';
 import StackButton from '../components/StackButton';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 /*
@@ -17,6 +18,38 @@ import { Link } from 'react-router-dom';
  게시글 타입이 '답변'인 경우 답변 채택 버튼을 표시합니다.
  */
 const Questions = () => {
+  const [questionList, setQuestionList] = useState(null)
+  useEffect(() => {
+    axios.get('http://localhost:8080/questions')
+      .then(data => {
+        setQuestionList(data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  function getTimeDifferenceString(pastTime) {
+    const ONE_DAY_MS = 24 * 60 * 60 * 1000; // Number of milliseconds in one day
+    const ONE_MONTH_MS = 30 * ONE_DAY_MS; // Number of milliseconds in one month
+    const ONE_YEAR_MS = 365 * ONE_DAY_MS; // Number of milliseconds in one year
+  
+    pastTime = new Date(pastTime);
+    const currentTime = new Date();
+    const timeDiffMs = currentTime - pastTime;
+  
+    if (timeDiffMs < ONE_DAY_MS) {
+      return 'today';
+    } else if (timeDiffMs < ONE_YEAR_MS) {
+      const numDays = Math.floor(timeDiffMs / ONE_DAY_MS);
+      return `${numDays} day${numDays === 1 ? '' : 's'}`;
+    } else if (timeDiffMs < ONE_YEAR_MS + ONE_MONTH_MS) {
+      const numMonths = Math.floor(timeDiffMs / ONE_MONTH_MS);
+      const numDays = Math.floor((timeDiffMs - numMonths * ONE_MONTH_MS) / ONE_DAY_MS);
+      return `${numMonths} month${numMonths === 1 ? '' : 's'}, ${numDays} day${numDays === 1 ? '' : 's'}`;
+    } else {
+      const numYears = Math.floor(timeDiffMs / ONE_YEAR_MS);
+      const numMonths = Math.floor((timeDiffMs - numYears * ONE_YEAR_MS) / ONE_MONTH_MS);
+      return `${numYears} year${numYears === 1 ? '' : 's'}, ${numMonths} month${numMonths === 1 ? '' : 's'}`;
+    }
+  }
   return (
     <div className="h-screen pt-[20px] pl-[20px]">
       <div className='pb-[80px]'>
@@ -29,7 +62,7 @@ const Questions = () => {
         </Link>
         <p className="text-xl text-left text-black">4 questions</p>
       </div>
-      {dummy.questions.map((data) => (
+      {questionList && questionList.map((data) => (
         <div
           key={data.id}
           className="flex flex-col justify-center w-[1050px] h-[150px]  border-t-[3px] border-[#f1f2f3]"
@@ -37,9 +70,9 @@ const Questions = () => {
           <div className="flex flex-row p-0">
             {/* 투표, answer, views */}
             <div className="flex flex-col whitespace-nowrap pr-5">
-              <span className="">-1 votes</span>
-              <span className="">0 answers</span>
-              <span className="">2 views</span>
+              <span className="">{data.votes} votes</span>
+              <span className="">{data.answer ? data.answer.length : 0} answers</span>
+              <span className="">{data.view} views</span>
             </div>
 
             <div className="flex flex-col pr-5">
@@ -68,7 +101,7 @@ const Questions = () => {
                   <span className="text-[#0075cf] ml-1">username</span>
                   <span className="text-black ml-1">12.2k</span>
                   <span className="text-right text-[#93999f] ml-1"></span>
-                  <span>modified 1 mins ago</span>
+                  <span>{getTimeDifferenceString(data.modifiedAt)} ago</span>
                 </div>
               </div>
               {/* username~ */}

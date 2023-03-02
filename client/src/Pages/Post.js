@@ -42,7 +42,7 @@ function Post() {
 
   // 페이지 이동 후 화면 표시
   useEffect(() => {
-    axios.get(`http://localhost:8000/questions/${params.id}`)
+    axios.get(`http://localhost:8080/questions/${params.id}`)
       .then((res) => {
         setPostContent(res.data);
         setIsLoading(false);

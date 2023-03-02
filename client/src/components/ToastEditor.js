@@ -4,27 +4,26 @@ import '@toast-ui/editor/dist/toastui-editor.css'
 import axios from 'axios';
 
 function ToastEditor() {
-  // 입력 내용을 저장하기 위한 state
-  // const [write, setWrite] = useState('');
-
   // Editor DOM 선택용
   const editorRef = useRef();
 
   // 등록 버튼 핸들러
   const handleRegisterButton = () => {
-    //  입력한 내용을 MarkDown 형태로 취득
-    console.log(editorRef.current?.getInstance().getMarkdown());
-    // setWrite(editorRef.current?.getInstance().getMarkdown());
+    
     axios.post('http://localhost:8080/questions', {
       // 타이틀 작성하는 것이 없어 더미로 test title 입력
       title: "test title",
-      // 작성한 내용이 저장된 상태인 write를 content로 실어서 서버에 전달
-      content: "write"
+      //  입력한 내용을 MarkDown 형태로 취득
+      content: editorRef.current?.getInstance().getMarkdown()
     })
       // 응답 코드 출력
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+      })
       // 에러 메시지 출력
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+      });
   };
 
     return (

@@ -1,6 +1,6 @@
 // import { doc } from "prettier";
 import writing from "../assets/writing.png"
-import Editor from "../components/Editor"
+import ToastEditor from "../components/ToastEditor"
 const Ask = () => {
     
     return (
@@ -44,7 +44,7 @@ const Ask = () => {
             <div className="border h-auto py-5 my-8 px-8">
                 <span className="text-2xl font-semibold">What are the details of your problem?</span><br/>
                 <span className="text-lg">Introduce the problem and expand on what you put in the title. Minimum 20 characters.</span><br/>                
-                <Editor options={ {id:'name',init:'기본 텍스트',height:'500px'} }/>
+                <ToastEditor options={ {id:'name',init:'기본 텍스트',height:'500px'} }/>
                 
             </div>
 
@@ -52,7 +52,7 @@ const Ask = () => {
             <div className="border h-auto py-5 my-8 px-8">
                 <span className="text-2xl font-semibold">What did you try and what were you expecting?</span><br/>
                 <span className="text-lg">Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.</span><br/>                
-                <Editor options={ {id:'name2',init:'기본 텍스트',height:'500px'} }/>
+                <ToastEditor options={ {id:'name2',init:'기본 텍스트',height:'500px'} }/>
                 
             </div>
             

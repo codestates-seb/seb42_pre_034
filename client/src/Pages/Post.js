@@ -42,9 +42,10 @@ function Post() {
 
   // 페이지 이동 후 화면 표시
   useEffect(() => {
+    console.log(params);
     axios.get(`http://localhost:8080/questions/${params.id}`)
       .then((res) => {
-        setPostContent(res.data);
+        setPostContent(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -60,7 +61,7 @@ function Post() {
       <header className='flex flex-col mb-4'>
         <div className='flex justify-between my-4'>
           {/* TODO: 제목 부분을 받아온 데이터로 표시하도록 수정 */}
-          <h1 className='text-4xl'>How to write better code than ChatGPT</h1>
+          <h1 className='text-4xl'>{postContent.title}</h1>
           <StackButton label="Ask Question"/>
         </div>
         <div className='flex items-center gap-4 '>

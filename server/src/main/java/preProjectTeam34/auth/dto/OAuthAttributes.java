@@ -27,10 +27,12 @@ public class OAuthAttributes {
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         if(registrationId.equals("google")){
             return ofGoogle("sub", attributes);
-        } else if (registrationId.equals("naver")) {
-            return ofNaver("id", attributes);
+        } else if (registrationId.equals("naver")&&"SuccessHandler".equals(userNameAttributeName)) {
+            return ofNaverSuccessHandler("id", attributes);
         } else if (registrationId.equals("kakao")){
             return ofKakao("id", attributes);
+        } else if (registrationId.equals("naver")){
+            return ofNaver("id", attributes);
         }
         return null;
     }
@@ -53,6 +55,17 @@ public class OAuthAttributes {
                 .email((String) response.get("email"))
                 .picture((String) response.get("profile_image"))
                 .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
+    private static OAuthAttributes ofNaverSuccessHandler(String userNameAttributeName, Map<String, Object> attributes) {
+
+        return OAuthAttributes.builder()
+                .name((String) attributes.get("name"))
+                .email((String) attributes.get("email"))
+                .picture((String) attributes.get("profile_image"))
+                .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }

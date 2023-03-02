@@ -27,7 +27,8 @@ const Questions = () => {
       }
     })
       .then(data => {
-        setQuestionList(data.data);
+        console.log(data);
+        setQuestionList(data.data.data);
       })
       .catch(err => console.log(err));
   }, []);
@@ -69,7 +70,7 @@ const Questions = () => {
       </div>
       {questionList && questionList.map((data) => (
         <div
-          key={data.id}
+          key={data.questionId}
           className="flex flex-col justify-center w-[1050px] h-[150px]  border-t-[3px] border-[#f1f2f3]"
         >
           <div className="flex flex-row p-0">
@@ -81,7 +82,7 @@ const Questions = () => {
             </div>
 
             <div className="flex flex-col pr-5">
-              <Link to={`/${data.id}`}>
+              <Link to={`/${data.questionId}`}>
                 <span className=" text-left text-[#0075cf]"> {data.title}</span>
               </Link>
               <span className="text-left text-black">{data.content}</span>
@@ -90,7 +91,7 @@ const Questions = () => {
                 {/* 태그
                         태그 갯수에 따라서 밑에 span 증가
                     */}
-                <div className="flex flex-row justify-start ">
+                {/* <div className="flex flex-row justify-start ">
                   <span className=" gap-2.5 px-[5px] py-0.5 text-center rounded-[3px] bg-[#e1ecf4] text-[#39739d] mr-1">
                     {data.tags[0]}
                   </span>
@@ -100,7 +101,7 @@ const Questions = () => {
                   <span className=" gap-2.5 px-[5px] py-0.5 text-center rounded-[3px] bg-[#e1ecf4] text-[#39739d] mr-1">
                     {data.tags[2]}
                   </span>
-                </div>
+                </div> */}
                 <div className="flex flex-row justify-start items-center">
                   <img src={cool} alt="" className="w-4 h-4 " />
                   <span className="text-[#0075cf] ml-1">username</span>

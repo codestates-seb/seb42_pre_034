@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
+import preProjectTeam34.auth.CustomOAuth2UserService;
 import preProjectTeam34.auth.dto.OAuthAttributes;
 import preProjectTeam34.auth.jwt.JwtTokenizer;
 import preProjectTeam34.auth.utils.CustomAuthorityUtils;
@@ -45,7 +46,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
         OAuth2AuthenticationToken oAuth2AuthenticationToken = (OAuth2AuthenticationToken) authentication;
         String registrationId = oAuth2AuthenticationToken.getAuthorizedClientRegistrationId();
         OAuth2User oAuth2User = ((OAuth2AuthenticationToken) authentication).getPrincipal();
-        OAuthAttributes attributes = OAuthAttributes.of(registrationId, null, oAuth2User.getAttributes());
+        OAuthAttributes attributes = OAuthAttributes.of(registrationId, "SuccessHandler", oAuth2User.getAttributes());
         Member.MemberStatus memberStatus = getMemberStatus(registrationId);
 
         Member member = saveOrUpdate(attributes, memberStatus);
@@ -71,7 +72,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
         String body = objectMapper.writeValueAsString(memberMapper.memberToMemberResponse(member));
         response.getWriter().write(body);
 
-//        response.sendRedirect("http://localhost:3000");
+        response.sendRedirect("http://localhost:3000");
 
     }
 
